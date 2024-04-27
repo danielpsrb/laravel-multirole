@@ -8,6 +8,6 @@ class SesiController extends Controller
 {
     function index()
     {
-        echo "Hello World!";
+        return view('pages.auth-login');
     }
 }
