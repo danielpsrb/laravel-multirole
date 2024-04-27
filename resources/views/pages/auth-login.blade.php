@@ -11,12 +11,21 @@
 <body>
     <div class="container py-5">
         <div class="w-50 center border rounded px-3 py-3 mx-auto">
-        <h1>Login</h1>
+        <h1>Login Page</h1>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" value="" name="email" class="form-control">
+                <input type="email" value="{{ old('email') }}" name="email" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
