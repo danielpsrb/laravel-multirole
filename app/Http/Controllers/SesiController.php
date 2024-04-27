@@ -28,7 +28,7 @@ class SesiController extends Controller
         ];
 
         if(Auth::attempt($loginInfo)) {
-            echo 'Login berhasil';exit();
+            return redirect('/admin');
         } else {
             return redirect('')->withErrors('Email dan password yang dimasukkan tidak sesuai')->withInput();
         }
