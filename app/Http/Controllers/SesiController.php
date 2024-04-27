@@ -30,7 +30,7 @@ class SesiController extends Controller
         if(Auth::attempt($loginInfo)) {
             echo 'Login berhasil';exit();
         } else {
-            return redirect('')->withErrors('Email atau password salah')->withInput();
+            return redirect('')->withErrors('Email dan password yang dimasukkan tidak sesuai')->withInput();
         }
     }
 }
