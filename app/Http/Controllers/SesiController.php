@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SesiController extends Controller
 {
@@ -20,5 +21,16 @@ class SesiController extends Controller
             'email.email' => 'Email tidak valid',
             'password.required' => 'Password harus diisi',
         ]);
+
+        $loginInfo = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if(Auth::attempt($loginInfo)) {
+            echo 'Login berhasil';exit();
+        } else {
+            return redirect('')->withErrors('Email atau password salah')->withInput();
+        }
     }
 }
